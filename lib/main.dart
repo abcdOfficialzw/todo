@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/app/home/state/todo/bloc.dart';
+import 'package:todo/app/home/state/todo/event.dart';
 import 'package:todo/routes.dart';
 import 'package:todo/utils/theme/color_schemes.dart';
 import 'package:todo/utils/theme/type.dart';
@@ -9,6 +12,13 @@ import 'package:todo/utils/theme/type.dart';
 import 'database/database.dart';
 
 void main() {
+  Logger.root.onRecord.listen((record) {
+    if (kDebugMode) {
+      print(
+        '${record.loggerName.toUpperCase()} ${record.level.name}: ${record.time.hour}:${record.time.minute} => ${record.message}',
+      );
+    }
+  });
   runApp(const MyApp());
 }
 
@@ -30,7 +40,7 @@ class MyApp extends StatelessWidget {
             );
           }
           return BlocProvider<TodoBloc>(
-            create: (context) => TodoBloc(database),
+            create: (context) => TodoBloc(database)..add(FetchTodoTasks()),
             child: MaterialApp.router(
               title: 'Taskyy',
               debugShowCheckedModeBanner: false,

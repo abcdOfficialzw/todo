@@ -20,10 +20,28 @@ class AddTodoTask extends TodoEvent {
   List<Object> get props => [todo];
 }
 
+class UpdateTodoTask extends TodoEvent {
+  final Todo todo;
+
+  const UpdateTodoTask(this.todo);
+
+  @override
+  List<Object> get props => [todo];
+}
+
 class CompleteTodoTask extends TodoEvent {
-  final int id;
+  final String id;
 
   const CompleteTodoTask(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
+
+class UnCompleteTodoTask extends TodoEvent {
+  final String id;
+
+  const UnCompleteTodoTask(this.id);
 
   @override
   List<Object> get props => [id];

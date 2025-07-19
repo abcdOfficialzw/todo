@@ -3,7 +3,7 @@ import 'package:todo/database/todo_model.dart';
 
 @dao
 abstract class TodoDao {
-  @Query('SELECT * FROM Todo')
+  @Query('SELECT * FROM Todo ORDER BY isDone ASC , createdAt DESC')
   Future<List<Todo>> getTodoTasks();
 
   @insert
@@ -16,5 +16,5 @@ abstract class TodoDao {
   Future<void> updateTodoTask(Todo todo);
 
   @Query('UPDATE Todo SET isDone = :isDone WHERE id = :id')
-  Future<void> updateTodoTaskStatus(int id, bool isDone);
+  Future<void> updateTodoTaskStatus(String id, bool isDone);
 }

@@ -96,7 +96,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Todo` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `isDone` INTEGER NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Todo` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `isDone` INTEGER NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -159,9 +159,10 @@ class _$TodoDao extends TodoDao {
 
   @override
   Future<List<Todo>> getTodoTasks() async {
-    return _queryAdapter.queryList('SELECT * FROM Todo',
+    return _queryAdapter.queryList(
+        'SELECT * FROM Todo ORDER BY isDone ASC , createdAt DESC',
         mapper: (Map<String, Object?> row) => Todo(
-            row['id'] as int,
+            row['id'] as String,
             row['title'] as String,
             (row['isDone'] as int) != 0,
             row['createdAt'] as String));
@@ -169,7 +170,7 @@ class _$TodoDao extends TodoDao {
 
   @override
   Future<void> updateTodoTaskStatus(
-    int id,
+    String id,
     bool isDone,
   ) async {
     await _queryAdapter.queryNoReturn(
