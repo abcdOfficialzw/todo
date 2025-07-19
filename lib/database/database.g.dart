@@ -115,6 +115,15 @@ class _$TodoDao extends TodoDao {
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database),
+        _todoInsertionAdapter = InsertionAdapter(
+            database,
+            'Todo',
+            (Todo item) => <String, Object?>{
+                  'id': item.id,
+                  'title': item.title,
+                  'isDone': item.isDone ? 1 : 0,
+                  'createdAt': item.createdAt
+                }),
         _todoUpdateAdapter = UpdateAdapter(
             database,
             'Todo',
@@ -142,6 +151,8 @@ class _$TodoDao extends TodoDao {
 
   final QueryAdapter _queryAdapter;
 
+  final InsertionAdapter<Todo> _todoInsertionAdapter;
+
   final UpdateAdapter<Todo> _todoUpdateAdapter;
 
   final DeletionAdapter<Todo> _todoDeletionAdapter;
@@ -164,6 +175,12 @@ class _$TodoDao extends TodoDao {
     await _queryAdapter.queryNoReturn(
         'UPDATE Todo SET isDone = ?2 WHERE id = ?1',
         arguments: [id, isDone ? 1 : 0]);
+  }
+
+  @override
+  Future<int> insertTodoTask(Todo todo) {
+    return _todoInsertionAdapter.insertAndReturnId(
+        todo, OnConflictStrategy.abort);
   }
 
   @override

@@ -6,6 +6,9 @@ abstract class TodoDao {
   @Query('SELECT * FROM Todo')
   Future<List<Todo>> getTodoTasks();
 
+  @insert
+  Future<int> insertTodoTask(Todo todo);
+
   @delete
   Future<void> deleteTodoTask(Todo todo);
 
