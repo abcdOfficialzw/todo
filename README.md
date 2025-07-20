@@ -46,7 +46,7 @@ efficiently.
 
 Check out the demo video to see the app in action:
 
-[Demo Video](assets/screenshots/2do%20Demo%20Video.MP4)
+[Demo Video](https://github.com/abcdOfficialzw/todo/blob/aaafe36a4ec1ab8baf7d1be17e3ccf3140dad0a9/assets/screenshots/2do%20Demo%20Video.MP4)
 
 ## 📱 Download
 
