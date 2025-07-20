@@ -6,6 +6,9 @@ abstract class TodoDao {
   @Query('SELECT * FROM Todo ORDER BY isDone ASC , createdAt DESC')
   Future<List<Todo>> getTodoTasks();
 
+  @Query('SELECT * FROM Todo WHERE isDone = :status ORDER BY createdAt DESC')
+  Future<List<Todo>> getTodoTasksByStatus(int status);
+
   @insert
   Future<int> insertTodoTask(Todo todo);
 

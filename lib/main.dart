@@ -25,7 +25,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureProvider(
@@ -40,9 +39,9 @@ class MyApp extends StatelessWidget {
             );
           }
           return BlocProvider<TodoBloc>(
-            create: (context) => TodoBloc(database)..add(FetchTodoTasks()),
+            create: (context) => TodoBloc(database)..add(FetchTodoTasks(null)),
             child: MaterialApp.router(
-              title: 'Taskyy',
+              title: '2do',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 useMaterial3: true,

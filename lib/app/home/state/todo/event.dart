@@ -9,7 +9,14 @@ abstract class TodoEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchTodoTasks extends TodoEvent {}
+class FetchTodoTasks extends TodoEvent {
+  const FetchTodoTasks(this.status);
+
+  final int? status;
+
+  @override
+  List<Object> get props => [status ?? -1];
+}
 
 class AddTodoTask extends TodoEvent {
   final Todo todo;

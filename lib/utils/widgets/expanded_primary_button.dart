@@ -11,6 +11,7 @@ class ExpandedPrimaryButton extends StatelessWidget {
     this.onPressed,
     this.borderRadius,
   });
+
   final String text;
   final Color? backgroundColor;
   final Color? borderColor;
@@ -24,22 +25,26 @@ class ExpandedPrimaryButton extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                backgroundColor ?? Theme.of(context).colorScheme.primary),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadius ?? 8.0),
-                    side: BorderSide(
-                        color: borderColor ??
-                            Theme.of(context).colorScheme.primary)))),
+          backgroundColor: WidgetStateProperty.all<Color>(
+            backgroundColor ?? Theme.of(context).colorScheme.primary,
+          ),
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 8.0),
+              side: BorderSide(
+                color: borderColor ?? Theme.of(context).colorScheme.primary,
+              ),
+            ),
+          ),
+        ),
         onPressed: onPressed,
         child: Padding(
           padding: EdgeInsets.all(Dimens.padding.small),
           child: Text(
             text,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: textColor ?? Theme.of(context).colorScheme.onPrimary,
-                ),
+              color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
         ),
       ),

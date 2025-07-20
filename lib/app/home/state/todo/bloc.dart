@@ -15,7 +15,13 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       logger.info("Fetching todo tasks");
       emit(TodoLoading());
       try {
-        List<Todo> todos = await _database.todoDao.getTodoTasks();
+        List<Todo> todos = [];
+        if (event.status != null) {
+          todos = await _database.todoDao.getTodoTasksByStatus(event.status!);
+        } else {
+          todos = await _database.todoDao.getTodoTasks();
+        }
+
         if (todos.isEmpty) {
           logger.info("No todo tasks found, emitting TodoEmpty state");
           emit(TodoEmpty());
@@ -36,7 +42,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         logger.info("Adding new todo task: ${event.todo.title}");
         int id = await _database.todoDao.insertTodoTask(event.todo);
 
-        // Fetch the updated list of todos
         List<Todo> todos = await _database.todoDao.getTodoTasks();
         if (todos.isEmpty) {
           logger.info(
@@ -72,7 +77,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       try {
         logger.info("Completing todo task with ID: ${event.id}");
         _database.todoDao.updateTodoTaskStatus(event.id, true);
-        // Fetch the updated list of todos
+
         List<Todo> todos = await _database.todoDao.getTodoTasks();
         logger.info("Todo task completed, fetching updated list of todos");
         emit(TodoLoaded(todos));
@@ -86,7 +91,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       try {
         logger.info("Completing todo task with ID: ${event.id}");
         _database.todoDao.updateTodoTaskStatus(event.id, false);
-        // Fetch the updated list of todos
+
         List<Todo> todos = await _database.todoDao.getTodoTasks();
         logger.info("Todo task completed, fetching updated list of todos");
         emit(TodoLoaded(todos));
@@ -100,7 +105,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       try {
         logger.info("Deleting todo task: ${event.todo.title}");
         await _database.todoDao.deleteTodoTask(event.todo);
-        // Fetch the updated list of todos
+
         await _database.todoDao.getTodoTasks().then((todos) {
           if (todos.isEmpty) {
             logger.info("No todo tasks left, emitting TodoEmpty state");

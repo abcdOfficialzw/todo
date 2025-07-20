@@ -97,11 +97,11 @@ class _TodoItemState extends State<TodoItem>
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       widget.todo.title,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     SizedBox(height: Dimens.spacing.small),
                     Text(
@@ -111,7 +111,6 @@ class _TodoItemState extends State<TodoItem>
                   ],
                 ),
               ),
-              Spacer(),
 
               if (!widget.todo.isDone) ...[
                 IconButton(

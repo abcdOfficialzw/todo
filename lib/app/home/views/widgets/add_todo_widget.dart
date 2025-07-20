@@ -52,6 +52,7 @@ class _AddTodoWidgetState extends State<AddTodoWidget> {
               onChanged: (value) {
                 updatedTitle = value;
               },
+              textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration.collapsed(
                 hintText: "e.g.. Take the trash out",
                 hintStyle: Theme.of(

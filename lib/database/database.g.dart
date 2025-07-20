@@ -169,6 +169,18 @@ class _$TodoDao extends TodoDao {
   }
 
   @override
+  Future<List<Todo>> getTodoTasksByStatus(int status) async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM Todo WHERE isDone = ?1 ORDER BY createdAt DESC',
+        mapper: (Map<String, Object?> row) => Todo(
+            row['id'] as String,
+            row['title'] as String,
+            (row['isDone'] as int) != 0,
+            row['createdAt'] as String),
+        arguments: [status]);
+  }
+
+  @override
   Future<void> updateTodoTaskStatus(
     String id,
     bool isDone,

@@ -18,7 +18,7 @@ class AppManager {
     } else if (inputDateWithoutTime == yesterday) {
       return "Yesterday • ${DateFormat("h:mm a").format(inputDate)}";
     } else {
-      return DateFormat("MMMM d").format(inputDate); // Example: "May 5"
+      return DateFormat("MMMM d").format(inputDate);
     }
   }
 }
