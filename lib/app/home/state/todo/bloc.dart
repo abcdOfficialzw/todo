@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2025.
+ * @author Takudzwa Titus Nyanhanga
+ * Email takudzwa@takutitus.me
+ * Created on 20/7/2025
+ */
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
 
