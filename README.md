@@ -1,6 +1,6 @@
 # Todo App
 
-A feature-rich Todo Application built with Flutter that helps you manage your daily tasks
+A Todo Application built with Flutter that helps you manage your daily tasks
 efficiently.
 
 ## 📱 Features
@@ -61,15 +61,15 @@ Download the latest version of the Todo App:
 - **Flutter**: UI framework for building natively compiled applications
 - **Dart**: Programming language optimized for building mobile, desktop, server, and web
   applications
-- **SQLite**: Local database for storing todo tasks
-- **Provider/BLoC**: State management
+- **Floor**: Local database for storing todo tasks
+- **Provider & BLoC**: State management
 - **Material Design**: Google's design system for intuitive and beautiful user interfaces
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Flutter SDK (3.0+)
+- Flutter SDK (3.29.0+)
 - Dart SDK
 - Android Studio / VS Code
 - iOS Simulator / Android Emulator
@@ -78,7 +78,7 @@ Download the latest version of the Todo App:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/todo.git
+   git clone https://github.com/abcdOfficialzw/todo
    ```
 
 2. Navigate to the project directory:
@@ -110,24 +110,14 @@ lib/
 └── routes.dart       # Application routing
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@abcdOfficialzw](https://github.com/abcdOfficialzw)
+- Email: takudzwa@takutitus.me
 
 ---
 
