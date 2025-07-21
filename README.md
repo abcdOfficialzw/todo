@@ -52,9 +52,8 @@ Check out the demo video to see the app in action:
 
 Download the latest version of the Todo App:
 
-- **Android
-  **: [Download APK](https://github.com/abcdOfficialzw/todo/tree/main/releases)
-- **iOS**: Available on the App Store (coming soon)
+- **Android**: [Download APK](https://github.com/abcdOfficialzw/todo/tree/main/releases)
+- **iOS**: [Join the Beta](https://testflight.apple.com/join/XBhyre3W)
 
 ## 🛠️ Built With
 
